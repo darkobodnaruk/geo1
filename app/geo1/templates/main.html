@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<p>Hello, {{ session.get('email', 'Anonymous') }}</p>
+
+<p>Number of visitors: {{ num_current_visitors }}</p>
+
+{% if 'email' in session %}
+
+<script>
+	function GetLocation(location) {
+		$.post('/set_location', {"lat": location.coords.latitude, "lng": location.coords.longitude}, function(d) {});
+	}
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(GetLocation);
+	}
+</script>
+
+<h2>Visitors by proximity</h2>
+{% for visitor in visitors_by_proximity %}
+	<li>{{ visitor['email'] or "Anonymous" }} - {{ "%.1f" % visitor['distance'] }} km</li>
+{% endfor %}
+
+<h2>Visitors in last 24 hours</h2>
+<ul>
+{% for hour in last_24_hours %}
+	<li>{{ hour.hour }}h: {{ hour.num_uniques }}</li>
+{% endfor %}
+</ul>
+
+{% endif %}
+
+{% endblock %}
