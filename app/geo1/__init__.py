@@ -13,8 +13,9 @@ app.config["MAIL_PASSWORD"] = 'KtfM7D3lGw'
 from routes import mail
 mail.init_app(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://geo1:geo1@localhost/geo1_development'
- 
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://geo1:geo1@localhost/geo1_development'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://geo1:geo1@' + os.environ['DB_PORT_3306_TCP_ADDR'] + '/geo1_development'
+
 from models import db
 db.init_app(app)
  
