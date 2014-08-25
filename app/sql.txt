@@ -1,0 +1,30 @@
+GRANT ALL PRIVILEGES ON geo1_development.* TO 'geo1'@'172.16.0.0/12' IDENTIFIED BY 'geo1';
+GRANT ALL PRIVILEGES ON geo1_development.* TO 'geo1'@'localhost' IDENTIFIED BY 'geo1';
+
+CREATE TABLE `users` (
+  	`uid` int(11) NOT NULL AUTO_INCREMENT,
+  	`email` varchar(120) NOT NULL,
+  	`pwdhash` varchar(100) NOT NULL,
+  	PRIMARY KEY (`uid`),
+  	UNIQUE KEY `email` (`email`)
+	) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1
+    
+CREATE TABLE `last_locations` (
+  	`id` int(11) NOT NULL AUTO_INCREMENT,
+  	`uid` int(11) DEFAULT NULL,
+  	`visitor_id` varchar(120) DEFAULT NULL,
+  	`lat` double DEFAULT NULL,
+  	`lng` double DEFAULT NULL,
+  	`dt` datetime DEFAULT NULL,
+  	PRIMARY KEY (`id`)
+	) ENGINE=InnoDB AUTO_INCREMENT=147 DEFAULT CHARSET=latin1
+	
+CREATE TABLE `visitor_locations` (
+  	`id` int(11) NOT NULL AUTO_INCREMENT,
+  	`uid` int(11) DEFAULT NULL,
+  	`visitor_id` varchar(120) DEFAULT NULL,
+  	`lat` double DEFAULT NULL,
+  	`lng` double DEFAULT NULL,
+  	`dt` datetime DEFAULT NULL,
+  	PRIMARY KEY (`id`)
+	) ENGINE=InnoDB AUTO_INCREMENT=192 DEFAULT CHARSET=latin1
