@@ -1,4 +1,4 @@
-GRANT ALL PRIVILEGES ON geo1_development.* TO 'geo1'@'172.16.0.0/12' IDENTIFIED BY 'geo1';
+GRANT ALL PRIVILEGES ON geo1_development.* TO 'geo1'@'172.%' IDENTIFIED BY 'geo1';
 GRANT ALL PRIVILEGES ON geo1_development.* TO 'geo1'@'localhost' IDENTIFIED BY 'geo1';
 
 CREATE TABLE `users` (
