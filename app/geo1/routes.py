@@ -93,7 +93,7 @@ def main():
     try:
         lat, lng = geolite2.lookup(remote_addr).location
     except Exception, e:
-        lat, lng = None, None
+        lat, lng = 0, 0
     
     if 'email' in session:
         user_id = User.query.filter_by(email = session['email']).first().uid
