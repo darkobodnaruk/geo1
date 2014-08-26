@@ -88,7 +88,7 @@ def main():
     remote_addr = request.environ['REMOTE_ADDR']    
     # TEMP, until we're on a public IP
     # remote_addr = "84.255.241.198"
-    remote_addr = "173.245.58.53"
+    # remote_addr = "173.245.58.53"
     
     try:
         lat, lng = geolite2.lookup(remote_addr).location
